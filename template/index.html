@@ -1,0 +1,62 @@
+<style>
+   
+   
+   @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+   
+   
+   #button-1 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to right, #3a8df7, #5a60f8);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
+        #button-1:hover {
+            background: linear-gradient(to right, #5a60f8, #3a8df7);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #button-1::after {
+            content: ">";
+            font-size: 18px;
+            margin-left: 10px;
+            transition: margin-left 0.3s;
+        }
+
+        #button-1:hover::after {
+            margin-left: 15px;
+        }
+        #Front-page-button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+</style>
+
+<div id="Front-page-button">
+<a  href="http://localhost:8501/page_1" style="text-decoration: none;">
+    <button id = "button-1" >Discover the Future</button>
+</a>
+</div>
