@@ -69,7 +69,7 @@ with st.container():
     st.markdown('<h1 class="main-title">Advanced AI-Powered Knowledge Retrieval</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Unlock the Full Potential of Your Data with AI</p>', unsafe_allow_html=True)
     
-    st.html("template\index.html")
+    st.html("index.html")
     #st.link_button("Start Exploring","http://localhost:8501/page_1")
 
 
