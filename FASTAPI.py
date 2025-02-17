@@ -8,7 +8,7 @@ from typing import AsyncIterable
 from pydantic import BaseModel
 import asyncio
 from langchain_core.output_parsers import StrOutputParser
-import json
+
 
 app = FastAPI()
 

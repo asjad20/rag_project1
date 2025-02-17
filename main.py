@@ -1,7 +1,5 @@
 import streamlit as st
-import requests
-import json
-import logger
+
 
 st.set_page_config(
     initial_sidebar_state="collapsed",
