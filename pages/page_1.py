@@ -5,7 +5,7 @@ import requests
 st.set_page_config(
     initial_sidebar_state="collapsed",
     layout="wide",
-      # Hides sidebar on page load
+
 )
 
 API_URL = "http://127.0.0.1:8000"

@@ -8,7 +8,12 @@ from typing import AsyncIterable
 from pydantic import BaseModel
 import asyncio
 from langchain_core.output_parsers import StrOutputParser
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+Gemini_Api_Key = os.getenv("GEMINI_API_KEY")
 
 app = FastAPI()
 
@@ -20,7 +25,7 @@ def streaming_function(query: str, perfect_match: str):
 
     model = GoogleGenerativeAI(
         model="gemini-1.5-pro",
-        api_key="AIzaSyA0zV8_N1dCriPUIiiF-Nit1sZHLeYU-no", 
+        api_key=Gemini_Api_Key, 
         streaming=True,
         verbose=False,
         callbacks=[callback],
@@ -37,7 +42,7 @@ def streaming_function(query: str, perfect_match: str):
 
     
 
-@app.post("/youtube")  # Corrected route name
+@app.post("/youtube") 
 def youtube(video_url: str):
     global documents_store, namespace_store
     try:
@@ -52,6 +57,7 @@ def youtube(video_url: str):
 
 @app.post("/upload")
 async def upload_file(file: UploadFile):
+    
     content = await file.read()
 
     with open(file.filename, "wb") as f:

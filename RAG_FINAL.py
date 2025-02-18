@@ -7,17 +7,25 @@ from langchain.schema import Document
 import whisper
 import yt_dlp
 from langchain_experimental.text_splitter import SemanticChunker
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+Azure_Api_Key = os.getenv("AZURE_API_KEY")
+Gemini_Api_key= os.getenv("GEMINI_API_KEY")
+Pinecone_Api_key= os.getenv("PINECONE_API_KEY")
 
 
 
 openai.api_type = "Azure"
-openai.api_key = "D7lXAaH2pucZEL5XmNmKskLgiMfnstppi7MqjouRQhyIK2EMxNs1JQQJ99BBACYeBjFXJ3w3AAABACOGWCUd"
+openai.api_key = Azure_Api_Key
 openai.api_base = "https://my-openai-service-asjad.openai.azure.com/"
 chunk_size = 500
 chunk_overlap = 50
 
 
-pc = Pinecone(api_key="pcsk_2QQPsk_62HtsrmqT6u75a9QD64mHinG8PMsyBLcP9s62ceadbmx2RbMf8kYNt7Hrqa1Kt3")
+pc = Pinecone(api_key=Pinecone_Api_key)
 
 index_name = "quickstart"
 
@@ -32,7 +40,7 @@ index_name = "quickstart"
 index = pc.Index(index_name)
 print(pc.list_indexes())
 
-llm = GoogleGenerativeAI(model="gemini-pro", api_key="AIzaSyA0zV8_N1dCriPUIiiF-Nit1sZHLeYU-no",streaming = True)
+llm = GoogleGenerativeAI(model="gemini-pro", api_key=Gemini_Api_key,streaming = True)
 
 name_space = {}
 def file_loader(file_path):
@@ -105,7 +113,7 @@ print("\nfile Loaded Successfully\n")
 
 embeddings = AzureOpenAIEmbeddings(
     azure_endpoint="https://my-openai-service-asjad.openai.azure.com/",
-    api_key= "D7lXAaH2pucZEL5XmNmKskLgiMfnstppi7MqjouRQhyIK2EMxNs1JQQJ99BBACYeBjFXJ3w3AAABACOGWCUd",
+    api_key= Azure_Api_Key,
     model="text-embedding-ada-002",  
     deployment="text-embedding-ada-002",  
     api_version="2023-12-01-preview",
