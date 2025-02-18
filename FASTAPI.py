@@ -10,6 +10,11 @@ import asyncio
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 import os
+import uvicorn
+
+if __name__ == "__main__":
+    uvicorn.run("FASTAPI:app", host="0.0.0.0", port=10000)
+
 
 load_dotenv()
 
